@@ -149,6 +149,7 @@ pub fn link(b: *Builder, step: *std.build.LibExeObjStep, options: Options) void 
                         var abs_path = std.fs.path.join(&arena.allocator, &.{ thisDir(), path }) catch unreachable;
                         x11_sources.append(abs_path) catch unreachable;
                     }
+                    std.log.info("adding x11 sources", .{});
                     step.addCSourceFiles(x11_sources.items, &.{flag});
                 },
                 .Wayland => {
